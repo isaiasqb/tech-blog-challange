@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Likes } = require('../../models');
+const { Post, User, Likes, Comment } = require('../../models');
 const sequelize = require('../../config/connection')
 
 //GET All Posts - api/posts
@@ -14,10 +14,20 @@ router.get('/', (req, res) => {
                   ]
                 ],
     order: [['date_posted', 'DESC']],
-    include: [{
+    include: [
+      {
       model: User,
       attributes: ['id', 'username']
-    }]
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_content', 'post_id', 'user_id', 'date_posted'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+    ]
   })
   .then(postInfo => res.json(postInfo))
   .catch(err => {
@@ -41,10 +51,20 @@ router.get('/:id', (req, res) => {
                     sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'),
                     'likes_count'
                   ]],
-    include: [{
+    include: [
+      {
       model: User,
       attributes: ['id', 'username']
-    }]
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_content', 'post_id', 'user_id', 'date_posted'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+    ]
   })
     .then(postInfo => {
       if (!postInfo) {
