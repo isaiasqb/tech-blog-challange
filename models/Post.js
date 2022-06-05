@@ -1,7 +1,28 @@
 const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Post extends Model {
+  //model method for Likes count
+  static likePost(body, models) {
+    return models.Likes.create({
+      user_id: body.user_id,
+      post_id: body.post_id
+    }).then(() => {
+      return Post.findOne({
+        where: {
+          id: body.post_id
+        },
+        attributes: [
+          'id',
+          'title',
+          'date_posted',
+          [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'),
+          'likes_count']
+        ]
+      });
+    });
+  }
+}
 
 Post.init({
   id: {

@@ -77,31 +77,39 @@ router.post('/', (req, res) => {
 
 // PUT, Liking a Post - api/posts/like
 router.put('/like', (req, res) => {
-  Likes.create({
-    user_id: req.body.user_id,
-    post_id: req.body.post_id
-  }).then(() => {
-    // then find the post we just voted on
-    return Post.findOne({
-      where: {
-        id: req.body.post_id
-      },
-      attributes: [
-        'id',
-        'title',
-        'date_posted',
-        [
-          sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'),
-          'likes_count'
-        ]
-      ]
-    })
+  Post.likePost(req.body, { Likes })
     .then(postInfo => res.json(postInfo))
     .catch(err => {
       console.log(err);
       res.status(400).json(err);
-    });
-});
+    })
+
+    //Functionality recreated as a model method
+//   Likes.create({
+//     user_id: req.body.user_id,
+//     post_id: req.body.post_id
+//   }).then(() => {
+//     // then find the post we just voted on
+//     return Post.findOne({
+//       where: {
+//         id: req.body.post_id
+//       },
+//       attributes: [
+//         'id',
+//         'title',
+//         'date_posted',
+//         [
+//           sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'),
+//           'likes_count'
+//         ]
+//       ]
+//     })
+//     .then(postInfo => res.json(postInfo))
+//     .catch(err => {
+//       console.log(err);
+//       res.status(400).json(err);
+//     });
+// });
 });
 
 //PUT Update a Post title - api/posts/1
