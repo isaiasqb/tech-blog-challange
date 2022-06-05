@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Likes } = require('../../models');
 
 // GET ALL users - /api/users
 router.get('/', (req, res) => {
@@ -20,7 +20,19 @@ router.get('/:id', (req, res) => {
     attributes: { exclude: ['password']},
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'title', 'date_posted']
+      },
+      {
+        model: Post,
+        attributes: ['title'],
+        through: Likes,
+        as: 'liked_posts'
+      }
+    ]
   })
   .then(userInfo => {
     if (!userInfo) {
@@ -110,7 +122,7 @@ router.delete('/:id', (req, res) => {
       res.status(400).json({message:'No user found with this ID' });
       return
     }
-    res.json(userInfo);
+    res.json({userInfo, message:`User ${req.params.id} has been deleted`});
   })
   .catch(err => {
     console.log(err);

@@ -13,4 +13,34 @@ Post.belongsTo(User, {
   onDelete: 'cascade'
 });
 
+//Association for the Likes functionality
+User.belongsToMany(Post, {
+  through: Likes,
+  as: 'liked_posts',
+  foreignKey: 'user_id'
+});
+
+Post.belongsToMany(User, {
+  through: Likes,
+  as: 'liked_posts',
+  foreignKey: 'post_id'
+});
+
+//Associations between Post-Likes & User-Likes
+Likes.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Likes.belongsTo(Post, {
+  foreignKey: 'post_id'
+});
+
+User.hasMany(Likes, {
+  foreignKey:'user_id'
+});
+
+Post.hasMany(Likes, {
+  foreignKey: 'post_id'
+});
+
 module.exports = { User, Post, Comment, Likes };
