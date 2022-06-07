@@ -1,41 +1,48 @@
+<div class="row">
 
-<form class="outlined">
-    <div class="row">
+    <form id="login-form" class="eight columns outlined ">
+          <div>
+            <label for="login-email">Email</label>
+            <input id="login-email"  type="email" placeholder="your@email.com">
+          </div>
 
-      <div class="six columns">
-        <label for="login-email">Email</label>
-        <input id="login-email" class="u-full-width" type="email" placeholder="your@email.com">
-      </div>
-      <div class="six columns">
-        <label for="login-password">Password</label>
-        <input id="login-password" class="u-full-width" type="password">
-      </div>
+          <div class="">
+            <label for="login-password">Password</label>
+            <input id="login-password"  type="password">
+          </div>
 
-    </div>
+          <div>
+          <button id="login-input" class="button-primary" type="submit" value="LOGIN">LOGIN</button>
+          </div>
+          <a class="instead">SignUp instead</a>
+    </form>
 
-    <button id="login-input" class="button-primary" type="submit" value="LOGIN">LOGIN</button>
-</form>
+    <form id="signup-form" class="eight columns outlined hidden ">
+        <div class="">
+          <label for="signup-user">Choose a Username</label>
+          <input id="signup-user" type="text">
+        </div>
 
-<form class="outlined">
-  <div class="row">
+        <div class="">
+          <label for="signup-github">Your Github Username</label>
+          <input id="signup-github" type="text">
+        </div>
 
-    <div class="six columns">
-      <label for="signup-user">Username</label>
-      <input id="signup-user" class="u-full-width" type="text">
-    </div>
+        <div class="">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" placeholder="your@email.com">
+        </div>
 
-    <div class="six columns">
-      <label for="signup-email">Email</label>
-      <input id="signup-email" class="u-full-width" type="password" placeholder="your@email.com">
-    </div>
+        <div class="">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password">
+        </div>
 
-    <div class="twelve columns">
-      <label for="signup-password">Password</label>
-      <input id="signup-password" type="email">
-    </div>
+        <div>
+        <input class="button-primary" type="submit" value="SIGNUP">
+        </div>
+    </form>
 
-  </div>
-  <input class="button-primary" type="submit" value="SIGNUP">
-</form>
+</div>
 
 <script src="/js/login.js"></script>

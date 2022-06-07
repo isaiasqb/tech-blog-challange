@@ -1,3 +1,4 @@
+{{!-- DISPLAYS A LIST OF ALL POSTS --}}
 <ul class="no-list">
   {{#each post as |one|}}
 
@@ -12,6 +13,7 @@
         {{one.date_posted}}
         |
         <a href="/post/{{one.id}}">{{one.comments.length}} comment(s)</a>
+        <strong>{{one.user.github}}</strong>
       </div>
     </article>
   </li>

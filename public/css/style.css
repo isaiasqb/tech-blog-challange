@@ -2,6 +2,10 @@ label{
   margin-right: 1em;
 }
 
+.hidden{
+  display: none;
+}
+
 .no-list{
   list-style-type: none;
 }
@@ -16,5 +20,6 @@ label{
 
 .coral {
   background-color: rgba(248, 131, 121, .8 );
+  color: white;
 }
 
