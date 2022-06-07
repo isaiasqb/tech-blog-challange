@@ -9,7 +9,7 @@
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <!-- STYLE-->
 
-  {{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/skeleton.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -18,16 +18,18 @@
 
 <body>
 
-  <div class="container">
-      <header>
-        <h1>
-          <a href="/">The Minimalistic Tech Blog</a>
-        </h1>
+      <header class="container">
+      {{> navbar}}
       </header>
-      <main>
+
+
+
+      <main class="container">
         {{{ body }}}
       </main>
-      <footer>
+
+
+      <footer class="container">
         Created by <a href="https://github.com/isaiasqb" target="_blank">isaiasqb</a>
       </footer>
   </div>

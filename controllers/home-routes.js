@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Likes } = require('../models');
 
-
+// HOMEPAGE route
 router.get('/', (req, res) => {
   Post.findAll({
     attributes: ['id', 
@@ -33,12 +33,17 @@ router.get('/', (req, res) => {
   .then(postInfo => {
     const post = postInfo.map(postItem => postItem.get({ plain: true }))
     res.render('homepage', { post });
-
   })
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
+});
+
+
+//LOGIN Route
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
 
