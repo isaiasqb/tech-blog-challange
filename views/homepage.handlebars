@@ -1,1 +1,20 @@
-<div>YOU ARE OON THE HOMEPAGE</div>
+<ul class="no-list">
+  {{#each post as |one|}}
+
+  <li class="outlined">
+    <article>
+      <div>
+        <a href="{{one.title}}" target="_blank">{{one.title}}</a>
+        <span>({{content}})</span>
+      </div>
+      <div>
+        {{one.likes_count}} likes(s) by {{one.user.username}} on
+        {{one.date_posted}}
+        |
+        <a href="/post/{{one.id}}">{{one.comments.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
+
+  {{/each}}
+</ul>
