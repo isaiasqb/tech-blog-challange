@@ -64,17 +64,12 @@ router.post('/', (req, res) => {
     password: req.body.password
   })
   .then(userInfo => {
-
-
     req.session.save(() => {
       req.session.user_id = userInfo.id;
       req.session.username = userInfo.username;
       req.session.loggedIn = true;
-
-      req.session.email = userInfo.email;
-      req.session.github = userInfo.guthub;
+      res.json(userInfo);
     })
-    
   })
   .catch(err => {
     console.log(err);
@@ -91,9 +86,8 @@ router.post('/login', (req, res) => {
       email: req.body.email
     }
   }).then(userInfo => {
-
     if(!userInfo){
-    res.status(400).json({ message: 'This email does not belong to any of our users'});
+    res.status(400).json({ message: 'This email does not belong to any of our users' });
     return;
     }
     //store boolean true/false in a variable
@@ -102,20 +96,27 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Invalid Password!'});
       return;
     }
+
     req.session.save(() => {
         req.session.user_id = userInfo.id;
         req.session.username = userInfo.username;
         req.session.loggedIn = true;
-        req.session.email = userInfo.email;
-        // req.session.github = userInfo.guthub;
-      })
 
-    res.json({ user: userInfo, message: 
-      `
-      ===================================
-      WELCOME, You logged in successfuly!
-      ==================================`});
+        res.json({ user: userInfo, message:'WELCOME, You logged in successfuly!' });
+    })
   })
+});
+
+
+//LOGOUT route
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 

@@ -1,5 +1,5 @@
  <nav>
-      <h1 class="colums">
+      <h1>
         <a href="/">The Minimalistic Tech Blog</a>
       </h1>
 
@@ -14,21 +14,29 @@
           Dashboard
           </a>
         </div>
-        {{#if loggedin}}
-        <div class="four columns">
-          <a href="/" class="u-full-width button button-primary">
-          Logout
-          </a>
-        </div>
-        {{else }}
+{{#if loggedin}}
+        {{!-- logout button couldbe placed here --}}
+{{else }}
           <div  class="four columns">
             <a href="/login" class="u-full-width button button-primary">
             Login
             </a>
           </div>
-        {{/if}}
+{{/if}}
       </div>
-    {{#if loggedin}}
-    <h4>Welcome Back<strong>{{username}}</strong></h4>
-    {{/if}}
+
+{{!-- {{#if loggedin}} --}}
+    <div class="row">
+        <div class="eight columns">
+            <h5>Welcome Back<strong>{{username}}</strong></h5>
+        </div>
+        <div class="four columns">
+            <button id="logout-btn">
+              <a href="/login">Logout</a>
+            </button>
+        </div>
+    </div>
+{{!-- {{/if}} --}}
 </nav>
+
+<script src="/js/logout.js"></script>
