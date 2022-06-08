@@ -1,39 +1,42 @@
 <div class="row">
-
-    <form id="login-form" class="eight columns outlined ">
-          <div>
+<div id="login-form-container" class="six columns outlined">
+    <form id="login-form" >
+          <div class="block">
             <label for="login-email">Email</label>
             <input id="login-email"  type="email" placeholder="your@email.com">
           </div>
 
-          <div class="">
+          <div class="block">
             <label for="login-password">Password</label>
             <input id="login-password"  type="password">
           </div>
 
-          <div>
+          <div class="block">
           <button id="login-input" class="button-primary" type="submit" value="LOGIN">LOGIN</button>
           </div>
-          <a class="instead">SignUp instead</a>
+          {{!-- <a class="instead">SignUp instead</a> --}}
     </form>
 
-    <form id="signup-form" class="eight columns outlined hidden ">
-        <div class="">
+</div>
+<div id="signup-form-container" class="six columns outlined ">
+
+    <form id="signup-form">
+        <div class="block">
           <label for="signup-user">Choose a Username</label>
           <input id="signup-user" type="text">
         </div>
 
-        <div class="">
+        <div class="block">
           <label for="signup-github">Your Github Username</label>
           <input id="signup-github" type="text">
         </div>
 
-        <div class="">
+        <div class="block">
           <label for="signup-email">Email</label>
           <input id="signup-email" type="email" placeholder="your@email.com">
         </div>
 
-        <div class="">
+        <div class="block">
           <label for="signup-password">Password</label>
           <input id="signup-password" type="password">
         </div>
@@ -43,6 +46,7 @@
         </div>
     </form>
 
+</div>
 </div>
 
 <script src="/js/login.js"></script>

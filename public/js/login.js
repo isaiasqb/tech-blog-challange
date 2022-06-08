@@ -20,11 +20,16 @@ if (username && email && password) {
   });
     
     if(response.ok) {
-      console.log('success');
+      // console.log('success');
+      alert("Your Account was created Successfully");
+      document.location.replace('/');
+      // document.getElementById('signup-form').requestFullscreen()
     } else {
       alert(response.statusText);
     }
   }
+
+
 };
 
 document.querySelector('#signup-form').addEventListener('submit', signupFormSubmit);
@@ -60,9 +65,9 @@ document.querySelector('#login-form').addEventListener('submit', loginFormSubmit
 
 
 // SHOW THE SIGN UP FORM INSTEAD
-function logInToggle () {
-  document.querySelector('#signup-form').classList.toggle('hidden');
-  document.querySelector('#login-form').classList.toggle('hidden');
-};
+// function logInToggle () {
+//   document.querySelector('#signup-form-container').classList.toggle('hidden');
+//   document.querySelector('#login-form-container').classList.toggle('hidden');
+// };
 
-document.querySelector('.instead').addEventListener('click', logInToggle);
+// document.querySelector('.instead').addEventListener('click', logInToggle);

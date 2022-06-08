@@ -6,6 +6,10 @@ label{
   display: none;
 }
 
+.block{
+  display: block;
+}
+
 .no-list{
   list-style-type: none;
 }
