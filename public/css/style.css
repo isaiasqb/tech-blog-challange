@@ -31,3 +31,7 @@ label{
   color: white;
 }
 
+.bigger {
+  transform: scale(1.3)
+}
+
