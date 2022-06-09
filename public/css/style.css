@@ -35,3 +35,6 @@ label{
   transform: scale(1.3)
 }
 
+#post-content{
+  height: 15em;
+}

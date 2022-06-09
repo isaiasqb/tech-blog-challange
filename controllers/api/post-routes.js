@@ -83,9 +83,9 @@ router.get('/:id', (req, res) => {
 //POST Create a Post - api/posts
 router.post('/', (req, res) => {
   Post.create({
-    title: req.body.title,
-    content: req.body.content,
-    user_id: req.body.user_id
+    title: req.body.postTitle,
+    content: req.body.postContent,
+    user_id: req.session.user_id
   })
   .then(postInfo => res.json(postInfo))
   .catch(err => {
