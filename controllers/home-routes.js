@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
   })
   .then(postInfo => {
     const post = postInfo.map(postItem => postItem.get({ plain: true }))
-    res.render('homepage', { post });
+    res.render('homepage', { post, loggedIn: req.session.loggedIn, userName: req.session.username });
   })
   .catch(err => {
     console.log(err);
@@ -91,7 +91,7 @@ router.get('/post/:id', (req, res) => {
 
     const post = postInfo.get({ plain: true });
 
-    res.render('single-post', { post });
+    res.render('single-post', { post, loggedIn: req.session.loggedIn, userName: req.session.username }); //pass a session variable to the template
   })
   .catch(err => {
     console.log(err);

@@ -14,8 +14,17 @@
           Dashboard
           </a>
         </div>
-{{#if loggedin}}
+{{#if loggedIn}}
         {{!-- logout button couldbe placed here --}}
+        <div class="four columns">
+            <button id="logout-btn">
+              <a href="/login">Logout</a>
+            </button>
+        </div>
+
+        <div class="eight columns">
+            <h5>Welcome Back <strong class="ml-4 mr-4 button">{{userName}}</strong> <i class="fa-solid fa-user-large"></i> </h5>
+        </div>
 {{else }}
           <div  class="four columns">
             <a href="/login" class="u-full-width button button-primary">
@@ -25,17 +34,21 @@
 {{/if}}
       </div>
 
-{{!-- {{#if loggedin}} --}}
-    <div class="row">
+{{!-- {{#if loggedIn}} --}}
+    {{!-- <div class="row">
         <div class="eight columns">
             <h5>Welcome Back<strong>{{username}}</strong></h5>
         </div>
+
+
         <div class="four columns">
             <button id="logout-btn">
               <a href="/login">Logout</a>
             </button>
         </div>
-    </div>
+
+
+    </div> --}}
 {{!-- {{/if}} --}}
 </nav>
 
