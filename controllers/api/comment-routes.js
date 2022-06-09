@@ -14,16 +14,20 @@ router.get('/', (req, res) => {
 
 // POST a comment
 router.post('/', (req, res) => {
-  Comment.create({
-    comment_content: req.body.comment_content,
-    user_id: req.body.user_id,
-    post_id: req.body.post_id
-  })
-    .then(commentInfo => res.json(commentInfo))
-    .catch(err => {
-      console.log(err);
-      res.status(400).json(err);
-    });
+  if(req.session) {
+
+    Comment.create({
+      comment_content: req.body.commentText,
+      user_id: req.session.user_id, // use the id from the session
+      post_id: req.body.postId
+    })
+      .then(commentInfo => res.json(commentInfo))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+
+  }
 });
 
 
