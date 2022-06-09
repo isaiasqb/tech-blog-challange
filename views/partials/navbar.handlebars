@@ -25,31 +25,16 @@
         <div class="eight columns">
             <h5>Welcome Back <strong class="bigger ml-3 mr-3 tag is-light is-large">{{userName}}</strong> <i class="fa-solid fa-user-large"></i> </h5>
         </div>
+      </div>
+</nav>
+
+<script src="/js/logout.js"></script>
 {{else }}
           <div  class="four columns">
             <a href="/login" class="u-full-width button button-primary">
             Login
             </a>
           </div>
-{{/if}}
       </div>
-
-{{!-- {{#if loggedIn}} --}}
-    {{!-- <div class="row">
-        <div class="eight columns">
-            <h5>Welcome Back<strong>{{username}}</strong></h5>
-        </div>
-
-
-        <div class="four columns">
-            <button id="logout-btn">
-              <a href="/login">Logout</a>
-            </button>
-        </div>
-
-
-    </div> --}}
-{{!-- {{/if}} --}}
 </nav>
-
-<script src="/js/logout.js"></script>
+{{/if}}
