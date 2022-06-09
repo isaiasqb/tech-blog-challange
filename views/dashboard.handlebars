@@ -1,5 +1,5 @@
 <div class="row">
-    <h5 id="create-post">Create a New Post</h5>
+    <h5 id="create-post" class="faded-blue">Create a New Post</h5>
     {{#if wantToPost}}
     <div id="signup-form-container" class="outlined ">
 
@@ -27,10 +27,10 @@
 
 
 <section>
-  <h5>Your Posts</h5>
+  <h5 class="faded-blue">Your Posts</h5>
   <ol class="no-list">
   {{#each post}}
-    <li class="">
+    <li>
       <article class="card">
         <a href="/post/{{id}}" >
           <div class="card-header">
@@ -47,8 +47,7 @@
           <p class="column is-align-content-end"><i class="fa-solid fa-heart"></i> {{likes_count}}</p>
         </div>
       </article>
-            
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      <a href="/dashboard/edit/{{post.id}}" class="button">Edit post</a>
     </li>
   {{/each}}
   <ol>

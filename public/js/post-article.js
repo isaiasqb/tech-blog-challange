@@ -17,7 +17,7 @@ async function postArticle(event) {
       }
     });
     if(response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
       alert('Your article has been posted!');
     } else {
       alert(response.statusText);
