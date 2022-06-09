@@ -3,20 +3,24 @@
   {{#each post as |one|}}
 
   <li class="outlined">
-    <article>
-      <div>
-        <a href="{{one.title}}" target="_blank">{{one.title}}</a>
-        <span>({{content}})</span>
+    <article class="card">
+      <a href="/post/{{one.id}}" >
+        <div class="card-header">
+          <h5 class="card-header-title">{{one.title}}</h5>
+        </div>
+      </a>
+      <div class="card-content mb-4">
+        {{!-- <p>{{one.content}}</p>  --}}
+        <p>Posted by <strong>{{one.user.username}}</strong> on {{one.date_posted}}</p>
       </div>
-      <div>
-        {{one.likes_count}} likes(s) by {{one.user.username}} on
-        {{one.date_posted}}
-        |
-        <a href="/post/{{one.id}}">{{one.comments.length}} comment(s)</a>
-        <strong>{{one.user.github}}</strong>
+
+      <div class="card-footer columns mb-2">
+        <p class="column"><strong>{{one.comments.length}}</strong> comment(s)</a></p>
+        <p class="column is-align-content-end"><i class="fa-solid fa-heart"></i> {{likes_count}}</p>
       </div>
     </article>
   </li>
 
   {{/each}}
 </ul>
+

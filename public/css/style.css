@@ -14,6 +14,10 @@ label{
   list-style-type: none;
 }
 
+.comment-list:nth-child(odd) {
+  background: rgba(248, 131, 121, .1 );
+}
+
 .outlined {
   outline: 3px solid rgba(248, 131, 121, .8 );
   margin-bottom: 2em;
