@@ -97,12 +97,14 @@ router.post('/', (req, res) => {
 
 // PUT, Liking a Post - api/posts/like
 router.put('/like', (req, res) => {
-  Post.likePost(req.body, { Likes })
-    .then(postInfo => res.json(postInfo))
-    .catch(err => {
-      console.log(err);
-      res.status(400).json(err);
-    })
+  if(req.session) {
+    Post.likePost({...req.body, user_id: req.session.user_id}, { Likes, Comment, User })
+      .then(postInfo => res.json(postInfo))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      })
+  }
 
     //Functionality recreated as a model method
 //   Likes.create({
