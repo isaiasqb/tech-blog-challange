@@ -26,3 +26,5 @@ async function postArticle(event) {
 };
 
 document.querySelector('#post-btn').addEventListener('click', postArticle);
+
+//FUNCTIONALITY FOR POSTING AN ARTICLE

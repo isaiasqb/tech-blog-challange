@@ -1,0 +1,57 @@
+<div class="row">
+    <h5 id="create-post">Create a New Post</h5>
+    {{#if wantToPost}}
+    <div id="signup-form-container" class="outlined ">
+
+        <form id="post-form">
+            <div class="block">
+              <label for="post-title">Article Title</label>
+              <input id="post-title" class="u-full-width" type="text">
+            </div>
+
+            <div>
+              <label for="post-content">Content</label>
+              <textarea id="post-content" class="u-full-width"></textarea>
+            </div>
+
+            <div>
+              <button id="post-btn" type="submit">POST</button>
+            </div>
+        </form>
+
+    </div>
+    {{/if}}
+</div>
+
+
+
+
+<section>
+  <h5>Your Posts</h5>
+  <ol class="no-list">
+  {{#each post}}
+    <li class="">
+      <article class="card">
+        <a href="/post/{{id}}" >
+          <div class="card-header">
+            <h5 class="card-header-title">{{title}}</h5>
+          </div>
+        </a>
+        <div class="card-content mb-4">
+          {{!-- <p>{{content}}</p>  --}}
+          <p><sup><i>{{format_date date_posted}}</i></sup></p>
+        </div>
+
+        <div class="card-footer columns mb-2">
+          <p class="column"><strong>{{comments.length}}</strong> comment(s)</a></p>
+          <p class="column is-align-content-end"><i class="fa-solid fa-heart"></i> {{likes_count}}</p>
+        </div>
+      </article>
+            
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+  {{/each}}
+  <ol>
+</section>
+
+<script src="/js/post-article.js"></script>

@@ -99,14 +99,4 @@ router.get('/post/:id', (req, res) => {
   })
 });
 
-//LOGIN Route
-router.get('/post', (req, res) => {
-  // if (!req.session.loggedIn) {
-  //     res.redirect('/login');
-  //     return;
-  //   }
-  
-    res.render('post-article');
-  });
-
 module.exports = router;
