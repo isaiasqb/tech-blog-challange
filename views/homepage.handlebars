@@ -1,26 +1,24 @@
 {{!-- DISPLAYS A LIST OF ALL POSTS --}}
 <ul class="no-list">
-  {{#each post as |one|}}
-
+  {{#each post}}
   <li class="outlined">
     <article class="card">
-      <a href="/post/{{one.id}}" >
+      <a href="/post/{{id}}" >
         <div class="card-header">
-          <h5 class="card-header-title">{{one.title}}</h5>
+          <h5 class="card-header-title">{{title}}</h5>
         </div>
       </a>
       <div class="card-content mb-4">
-        {{!-- <p>{{one.content}}</p>  --}}
-        <p>Posted by <strong>{{one.user.username}}</strong> on {{one.date_posted}}</p>
+        {{!-- <p>{{content}}</p>  --}}
+        <p>Posted by <strong>{{user.username}}</strong> <sup><i>{{format_date date_posted}}</i></sup></p>
       </div>
 
       <div class="card-footer columns mb-2">
-        <p class="column"><strong>{{one.comments.length}}</strong> comment(s)</a></p>
+        <p class="column"><strong>{{comments.length}}</strong> comment(s)</a></p>
         <p class="column is-align-content-end"><i class="fa-solid fa-heart"></i> {{likes_count}}</p>
       </div>
     </article>
   </li>
-
   {{/each}}
 </ul>
 

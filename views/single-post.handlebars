@@ -1,16 +1,17 @@
 {{!-- SINGLE POST INFO --}}
     <article class="card">
-      <a href="/post/{{post.id}}" >
+      {{!-- <a href="/post/{{post.id}}" > --}}
         <div class="card-header">
           <h5 class="card-header-title">{{post.title}}</h5>
         </div>
-      </a>
+      {{!-- </a> --}}
+
       <div class="card-content mb-4">
         <p>{{post.content}}</p> 
-        <p>Posted by <strong>{{post.user.username}}</strong> on {{post.date_posted}}</p>
+        <p class="faded-blue">Posted by <strong>{{post.user.username}}</strong> <sup> {{format_date post.date_posted}} </sup></p>
       </div>
 
-      <div class="card-footer columns mb-2">
+      <div class="card-footer">
         <p class="column"><strong>{{post.comments.length}}</strong> comment(s)</a></p>
         <p class="column is-align-content-end"><i class="fa-solid fa-heart"></i> {{post.likes_count}}</p>
       </div>
@@ -30,23 +31,9 @@
   </form>
 {{/if}}
 
-<div class="mb-2">
-  <ul class="no-list">
 
-      {{#each post.comments}}
-          <li  class="p-3 mb-4 comment-list">
-            <section>
-              <div>
-                {{user.username}} on {{date_posted}}
-              </div>
-              <div class="mt-3">
-                {{comment_content}}
-              </div>
-            </section>
-          </li>
-      {{/each}}
-  </ul>
-</div>
+{{> comments post.comments}}
+
 
 {{#if loggedIn}}
   <Script src="/js/comment-like.js"></Script>

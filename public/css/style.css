@@ -38,3 +38,9 @@ label{
 #post-content{
   height: 15em;
 }
+
+.faded-blue{
+  background-color: rgba(51, 195, 241, 0.1);
+  padding: 0px;
+  border-radius: 6px;
+}

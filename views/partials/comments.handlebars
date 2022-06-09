@@ -1,0 +1,17 @@
+<div class="mb-2">
+  <ul class="no-list">
+
+      {{#each this}}
+          <li  class="p-3 mb-4 comment-list">
+            <section>
+              <div>
+                <strong>{{user.username}}</strong>  <sup><i>{{ format_date date_posted}}</i></sup>, 
+              </div>
+              <div class="mt-3">
+                {{comment_content}}
+              </div>
+            </section>
+          </li>
+      {{/each}}
+  </ul>
+</div>
