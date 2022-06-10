@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
 });
 
 
-//FIND a Commend 
+//FIND a Comment 
 router.get('/:id', (req, res) => {
   Comment.findOne({
     where:

@@ -1,0 +1,44 @@
+{{!-- SINGLE POST INFO --}}
+    <article class="card">
+
+      <a href="/dashboard"> &larr; Back to dashboard</a>
+      <h5 id="create-post" class="faded-blue">Edit Post</h5>
+
+
+   <div id="edit-form-container" class="outlined ">
+        <form id="edit-form">
+            <div class="block">
+              <label for="edit-title">Article Title</label>
+              <input id="edit-title" class="u-full-width" type="text" placeholder="{{post.title}}">
+            </div>
+
+            <div>
+              <label for="edit-content">Content</label>
+              <textarea id="edit-content" class="u-full-width" placeholder="{{post.content}}"></textarea>
+            </div>
+
+            <div>
+              <button id="save-post-btn" type="submit">SAVE POST</button>
+              <button id="delete-post-btn" type="submit">DELETE POST</button>
+            </div>
+        </form>
+    </div>
+
+  <form id="comment-form" class="mt-6">
+    <div>
+      <textarea name="comment-text" class="u-full-width" placeholder="Let us know aout the changes you made to this post..."></textarea>
+    </div>
+
+    <div>
+      <button id="comment-btn" type="submit" class="">leave A comment</button>
+    </div>
+  </form>
+
+{{> comments post.comments}}
+
+
+
+
+<script src="/js/edit-post.js"></script>
+<script src="/js/comment.js"></script>
+<script src="/js/edit.js"></script>

@@ -40,4 +40,43 @@ router.get('/', userAuth, (req, res) => {
     })
   });
 
+
+  //EDIT POST 
+  router.get('/edit/:id', userAuth, (req, res) => {
+    Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['id', 
+                    'title', 
+                    'content',
+                    'date_posted',
+                    [
+                      sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post.id = likes.post_id)'),
+                      'likes_count'
+                    ]],
+      include: [
+        {
+        model: User,
+        attributes: ['id', 'username']
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_content', 'post_id', 'user_id', 'date_posted'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+      ]
+    })
+    .then(postInfo => {
+      const post = postInfo.get({ plain: true});
+      res.render('edit-post', { post, loggedIn: true, userName: req.session.username, wantToPost: true,});
+    })
+      .catch(err => {
+        res.status(500).json(err)
+      })
+    });
+
 module.exports = router;
